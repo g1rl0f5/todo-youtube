@@ -81,11 +81,11 @@ function App() {
     <div
       className="min-h-screen
 bg-gradient-to-br from gray-50 to-gray-100
-flex items-center justify-center p-4"
+flex items-center justify-center p-4 sm:p-6"
     >
       <div
         className="bg-white rounded-2xl
-  shadow-xl w-full max-w-lg p-8"
+  shadow-xl w-full max-w-lg p-8 sm:p-8"
       >
         <h1
           className="text-4xl
@@ -94,12 +94,14 @@ flex items-center justify-center p-4"
           TASK MANAGER
         </h1>
 
-        <form
+         {/* <form
           onSubmit={addTodo}
           className="flex items-center gap-2 shadow-sm border border-gray-100 p-2 rounded-lg"
-        >
+        > */}
+        <form onSubmit={addTodo} className="flex flex-col sm:flex-row gap-2 shadow-sm border border-gray-100 p-2 rounded-lg">
+
           <input
-            className="flex-1 outline-none px-3 py-2 text-gray-700 placeholder-gray-400"
+            className="w-full sm:flex-1 outline-none px-3 py-2 text-gray-700 placeholder-gray-400"
             type="text"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
@@ -109,13 +111,13 @@ flex items-center justify-center p-4"
 
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium cursor-pointer"
+            className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium cursor-pointer"
           >
             Add This Task
           </button>
         </form>
 
-        <div className="mt-4">
+        <div className="mt-4 max-h-[60vh] overflow-y-auto pr-1">
           {todos.length === 0 ? (
             <div></div>
           ) : (
@@ -148,7 +150,7 @@ flex items-center justify-center p-4"
                     </div>
                   ) : (
                     <div>
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                         <div className="flex items-center gap-x-4 overflow-hidden">
                           <button
                             onClick={() => toggleTodo(todo._id)}
@@ -163,7 +165,7 @@ flex items-center justify-center p-4"
                           </button>
 
                           <span
-                            className={`text-gray-800  font-medium truncate ${
+                            className={`text-gray-800  font-medium sm:truncate ${
                               todo.completed ? "line-through text-gray-200" : ""
                             }`}
                           >
